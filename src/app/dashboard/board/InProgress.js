@@ -1,16 +1,17 @@
 "use client";
 import Title from "antd/es/typography/Title";
 import Todo from "./Todo";
+import { useCounterStore } from "@/Providers/CounterStoreProvider";
 
-const InProgress = ({
-  state,
-  onDragOver,
-  onEndDrag,
-  dragContainerName,
-  onItemDragStart,
-  onItemDragEnd,
-}) => {
-  const [items] = state;
+const InProgress = () => {
+  const {
+    items,
+    onDragOver,
+    onEndDrag,
+    dragContainerName,
+    onItemDragStart,
+    onItemDragEnd,
+  } = useCounterStore((state) => state);
   const progressItem = items?.filter((todo) => todo.status === "progress");
 
   return (

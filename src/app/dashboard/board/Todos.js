@@ -1,16 +1,17 @@
 "use client";
 import Title from "antd/es/typography/Title";
 import Todo from "./Todo";
+import { useCounterStore } from "@/Providers/CounterStoreProvider";
 
-const Todos = ({
-  state,
-  onDragOver,
-  onEndDrag,
-  dragContainerName,
-  onItemDragStart,
-  onItemDragEnd,
-}) => {
-  const [items, setItem] = state;
+const Todos = () => {
+  const {
+    items,
+    onDragOver,
+    onEndDrag,
+    dragContainerName,
+    onItemDragStart,
+    onItemDragEnd,
+  } = useCounterStore((state) => state);
   const todos = items?.filter((todo) => todo.status === "todo");
 
   return (

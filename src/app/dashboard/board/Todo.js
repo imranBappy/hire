@@ -1,17 +1,13 @@
 import { Avatar, Button } from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
-import React, { useState } from "react";
 import { MoreOutlined } from "@ant-design/icons";
+import { useCounterStore } from "@/Providers/CounterStoreProvider";
 
-const Todo = ({ todo, onItemDragStart, onItemDragEnd }) => {
-  //   const handleDragEnter = (e) => {
-  //     const id = e.target.getAttribute("data-id");
-  //     console.log("enter", id);
-  //   };
+const Todo = ({ todo }) => {
+  const { onItemDragStart, onItemDragEnd } = useCounterStore((state) => state);
   return (
     <div
       onDragStart={onItemDragStart}
-      //   onDragEnter={handleDragEnter}
       data-id={todo.id}
       className="rounded shadow-sm bg-white px-3 py-3 cursor-pointer "
       draggable={true}

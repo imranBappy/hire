@@ -38,6 +38,7 @@ const myTodos = [
   },
 ];
 export const defaultInitState = {
+  isLoggedIn: false,
   items: myTodos,
   dragContainerName: "",
   currentDragItem: null,
@@ -47,6 +48,8 @@ export const createCounterStore = (initState = defaultInitState) => {
   return createStore()((set) => ({
     ...initState,
     setItems: (items) => set({ items }),
+    loginIn: () => set({ isLoggedIn: true }),
+    loginOut: () => set({ isLoggedIn: false }),
     onDragOver: (e) => {
       e.preventDefault();
       const name = e.target.getAttribute("data-name");
@@ -68,5 +71,14 @@ export const createCounterStore = (initState = defaultInitState) => {
       });
     },
     setCurrentDragItem: (currentDragItem) => set({ currentDragItem }),
+    onItemDragStart: (e) => {
+      const id = e.target.getAttribute("data-id");
+      if (id) {
+        set({ currentDragItem: Number(id) });
+      }
+    },
+    onItemDragEnd: (e) => {
+      set({ currentDragItem: null });
+    },
   }));
 };

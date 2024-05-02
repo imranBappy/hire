@@ -1,9 +1,16 @@
 import Title from "antd/es/typography/Title";
 import Todo from "./Todo";
+import { useCounterStore } from "@/Providers/CounterStoreProvider";
 
-const Done = ({ state, onDragOver, onEndDrag, dragContainerName,onItemDragStart,
-  onItemDragEnd, }) => {
-  const [items, setItem] = state;
+const Done = () => {
+  const {
+    items,
+    onDragOver,
+    onEndDrag,
+    dragContainerName,
+    onItemDragStart,
+    onItemDragEnd,
+  } = useCounterStore((state) => state);
   const doneItems = items?.filter((todo) => todo.status === "done");
   return (
     <div
