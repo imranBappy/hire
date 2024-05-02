@@ -60,6 +60,7 @@ const App = () => {
         <Form.Item
           label="Username"
           name="username"
+          initialValue={"admin"}
           rules={[
             {
               required: true,
@@ -71,6 +72,7 @@ const App = () => {
         </Form.Item>
 
         <Form.Item
+          initialValue={"admin"}
           label="Password"
           name="password"
           rules={[
